@@ -213,6 +213,151 @@ dl.column-content dd span {
 <p class="sisterlink"><a href="./schema-twitterdb.html">to SchemaHTML</a></p>
 </div>
 
+<div class="section diffCode_20200513074406">
+	<h2>
+		<span class="titlediffno">diffNo. 8:</span> <span class="titlediffdatepart">2020/05/13</span> <span class="titledifftimepart">07:44:06</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4><a href="./schema-twitterdb.html#user">USER</a></h4>
+		<div class="change-table-content">
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>IX_USER_EMAIL_ADDRESS</li>
+			</ul>
+			<h5>Delete Index</h5>
+			<ul class="column-content">
+				<li>IX_USER_USERNAME</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section diffCode_20200513074137">
+	<h2>
+		<span class="titlediffno">diffNo. 7:</span> <span class="titlediffdatepart">2020/05/13</span> <span class="titledifftimepart">07:41:37</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>USER</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>EMAIL</li>
+				<li>UID</li>
+				<li>CREATED_AT</li>
+				<li>UPDATED_AT</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>EMAIL_ADDRESS</li>
+			</ul>
+			<h5>Change PK</h5>
+			<dl class="column-content">
+				<dt>PRIMARY</dt>
+				<dd><span>Column</span>USERNAME&nbsp;-&gt;&nbsp;UID</dd>
+			</dl>
+			<h5>Change UQ</h5>
+			<dl class="column-content">
+				<dt>IX_USER_EMAIL_ADDRESS</dt>
+				<dd><span>Column</span>EMAIL_ADDRESS&nbsp;-&gt;&nbsp;EMAIL</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section diffCode_20200513063251">
+	<h2>
+		<span class="titlediffno">diffNo. 6:</span> <span class="titlediffdatepart">2020/05/13</span> <span class="titledifftimepart">06:32:51</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>USER</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>EMAIL_ADDRESS</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>UQ_EMAIL_ADDRESS</li>
+			</ul>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>IX_USER_EMAIL_ADDRESS</li>
+			</ul>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>UQ_EMAIL_ADDRESS</li>
+			</ul>
+			<h5>Add Index</h5>
+			<ul class="column-content">
+				<li>IX_USER_USERNAME</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section diffCode_20200513061935">
+	<h2>
+		<span class="titlediffno">diffNo. 5:</span> <span class="titlediffdatepart">2020/05/13</span> <span class="titledifftimepart">06:19:35</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>USER</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>UQ_EMAIL_ADDRESS</li>
+				<li>DATE_OF_BIRTH_AT</li>
+				<li>COUNTRY_ID</li>
+				<li>JOIN_DATE_AT</li>
+				<li>LAST_LOGIN_AT</li>
+			</ul>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>EMAIL_ADDRESS</li>
+				<li>BIRTHDATE</li>
+				<li>COUNTRY_</li>
+				<li>JOIN_DATE</li>
+				<li>LAST_LOGIN</li>
+			</ul>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>UQ_EMAIL_ADDRESS</li>
+			</ul>
+			<h5>Delete UQ</h5>
+			<ul class="column-content">
+				<li>EMAIL_ADDRESS</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section diffCode_20200513060310">
+	<h2>
+		<span class="titlediffno">diffNo. 4:</span> <span class="titlediffdatepart">2020/05/13</span> <span class="titledifftimepart">06:03:10</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>USER</li>
+	</ul>
+	<h3>Delete Table</h3>
+	<ul class="table-content">
+		<li>SAMPLE</li>
+	</ul>
+</div>
 <div class="section diffCode_20200416074020">
 	<h2>
 		<span class="titlediffno">diffNo. 3:</span> <span class="titlediffdatepart">2020/04/16</span> <span class="titledifftimepart">07:40:20</span>
@@ -222,7 +367,7 @@ dl.column-content dd span {
 
 	<h3>Change Table</h3>
 	<div class="table-content">
-		<h4><a href="./schema-twitterdb.html#sample">SAMPLE</a></h4>
+		<h4>SAMPLE</h4>
 		<div class="change-table-content">
 			<h5>Add Column</h5>
 			<ul class="column-content">
@@ -435,7 +580,27 @@ dl.column-content dd span {
             ]
         };
         this.pickupStore = {
-            '20200416074020' : {
+            '20200513074406' : {
+                'diffDate' : '2020/05/13 07:44:06',
+                'diffComment' : ''
+            }
+            , '20200513074137' : {
+                'diffDate' : '2020/05/13 07:41:37',
+                'diffComment' : ''
+            }
+            , '20200513063251' : {
+                'diffDate' : '2020/05/13 06:32:51',
+                'diffComment' : ''
+            }
+            , '20200513061935' : {
+                'diffDate' : '2020/05/13 06:19:35',
+                'diffComment' : ''
+            }
+            , '20200513060310' : {
+                'diffDate' : '2020/05/13 06:03:10',
+                'diffComment' : ''
+            }
+            , '20200416074020' : {
                 'diffDate' : '2020/04/16 07:40:20',
                 'diffComment' : ''
             }
