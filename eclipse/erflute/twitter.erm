@@ -107,15 +107,15 @@
 	</tablespace_set>
 	<diagram_walkers>
 		<table>
-			<physical_name>USER</physical_name>
-			<logical_name>User</logical_name>
-			<description>User information</description>
-			<height>402</height>
-			<width>191</width>
+			<physical_name>COUNTRY</physical_name>
+			<logical_name>Country</logical_name>
+			<description></description>
+			<height>75</height>
+			<width>185</width>
 			<font_name>.AppleSystemUIFont</font_name>
 			<font_size>9</font_size>
-			<x>422</x>
-			<y>84</y>
+			<x>112</x>
+			<y>543</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -125,12 +125,93 @@
 			</connections>
 			<columns>
 				<normal_column>
-					<physical_name>NICKNAME</physical_name>
-					<logical_name>Nickname</logical_name>
-					<type>varchar(n)</type>
-					<length>20</length>
-					<description>Displayed nickname for the account</description>
+					<physical_name>COUNTRY_ID</physical_name>
+					<logical_name>Country ID</logical_name>
+					<type>bigint</type>
 					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<auto_increment>true</auto_increment>
+				</normal_column>
+				<normal_column>
+					<physical_name>COUNTRY_NAME</physical_name>
+					<logical_name>Country Name</logical_name>
+					<type>varchar(n)</type>
+					<length>100</length>
+				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<compound_unique_key_list>
+			</compound_unique_key_list>
+			<table_properties>
+			</table_properties>
+		</table>
+		<table>
+			<physical_name>DISPLAY_LANGUAGE</physical_name>
+			<logical_name>Didsplay Language</logical_name>
+			<description></description>
+			<height>75</height>
+			<width>233</width>
+			<font_name>.AppleSystemUIFont</font_name>
+			<font_size>9</font_size>
+			<x>323</x>
+			<y>536</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+			</connections>
+			<columns>
+				<normal_column>
+					<physical_name>DISPLAY_LANGUAGE_ID</physical_name>
+					<logical_name>Display Language ID</logical_name>
+					<type>bigint</type>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+				</normal_column>
+				<normal_column>
+					<physical_name>DISPLAY_LANGUAGE_NAME</physical_name>
+					<logical_name>Display Language Name</logical_name>
+					<type>varchar(n)</type>
+					<length>100</length>
+					<not_null>true</not_null>
+				</normal_column>
+			</columns>
+			<indexes>
+			</indexes>
+			<compound_unique_key_list>
+			</compound_unique_key_list>
+			<table_properties>
+			</table_properties>
+		</table>
+		<table>
+			<physical_name>USER</physical_name>
+			<logical_name>User</logical_name>
+			<description>User information</description>
+			<height>402</height>
+			<width>191</width>
+			<font_name>.AppleSystemUIFont</font_name>
+			<font_size>9</font_size>
+			<x>317</x>
+			<y>88</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+			</connections>
+			<columns>
+				<normal_column>
+					<physical_name>UID</physical_name>
+					<logical_name>User ID</logical_name>
+					<type>bigint</type>
+					<description>Unique UID in database as primary key.</description>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<auto_increment>true</auto_increment>
 				</normal_column>
 				<normal_column>
 					<physical_name>EMAIL</physical_name>
@@ -153,8 +234,8 @@
 				<normal_column>
 					<physical_name>PASSWORD_HASH</physical_name>
 					<logical_name>Hashed password</logical_name>
-					<type>character(n)</type>
-					<length>32</length>
+					<type>varchar(n)</type>
+					<length>255</length>
 					<not_null>true</not_null>
 				</normal_column>
 				<normal_column>
@@ -166,10 +247,115 @@
 					<not_null>true</not_null>
 				</normal_column>
 				<normal_column>
+					<physical_name>JOIN_DATE_AT</physical_name>
+					<logical_name>Join date</logical_name>
+					<type>datetime</type>
+					<not_null>true</not_null>
+				</normal_column>
+				<normal_column>
+					<physical_name>LAST_LOGIN_AT</physical_name>
+					<logical_name>Last login</logical_name>
+					<type>datetime</type>
+				</normal_column>
+				<column_group>AUDIT</column_group>
+			</columns>
+			<indexes>
+			</indexes>
+			<compound_unique_key_list>
+			</compound_unique_key_list>
+			<table_properties>
+			</table_properties>
+		</table>
+		<table>
+			<physical_name>USER_PROF</physical_name>
+			<logical_name>User Profile</logical_name>
+			<description></description>
+			<height>239</height>
+			<width>180</width>
+			<font_name>.AppleSystemUIFont</font_name>
+			<font_size>9</font_size>
+			<x>118</x>
+			<y>244</y>
+			<color>
+				<r>128</r>
+				<g>128</g>
+				<b>192</b>
+			</color>
+			<connections>
+				<relationship>
+					<name>FK_USER_PROF_USER</name>
+					<source>table.USER</source>
+					<target>table.USER_PROF</target>
+					<fk_columns>
+						<fk_column>
+							<fk_column_name>USER_PROF_ID</fk_column_name>
+						</fk_column>
+					</fk_columns>
+					<parent_cardinality>1</parent_cardinality>
+					<child_cardinality>1</child_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+				</relationship>
+				<relationship>
+					<name>FK_USER_PROF_COUNTRY</name>
+					<source>table.COUNTRY</source>
+					<target>table.USER_PROF</target>
+					<fk_columns>
+						<fk_column>
+							<fk_column_name>COUNTRY_ID</fk_column_name>
+						</fk_column>
+					</fk_columns>
+					<parent_cardinality>1</parent_cardinality>
+					<child_cardinality>0..n</child_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+				</relationship>
+				<relationship>
+					<name>FK_USER_PROF_DISPLAY_LANGUAGE</name>
+					<source>table.DISPLAY_LANGUAGE</source>
+					<target>table.USER_PROF</target>
+					<fk_columns>
+						<fk_column>
+							<fk_column_name>DISPLAY_LANGUAGE_ID</fk_column_name>
+						</fk_column>
+					</fk_columns>
+					<parent_cardinality>1</parent_cardinality>
+					<child_cardinality>0..n</child_cardinality>
+					<reference_for_pk>true</reference_for_pk>
+					<on_delete_action>RESTRICT</on_delete_action>
+					<on_update_action>RESTRICT</on_update_action>
+				</relationship>
+			</connections>
+			<columns>
+				<normal_column>
+					<physical_name>USER_PROF_ID</physical_name>
+					<logical_name>User Profile ID</logical_name>
+					<referred_column>table.USER.UID</referred_column>
+					<relationship>FK_USER_PROF_USER</relationship>
+					<not_null>true</not_null>
+					<primary_key>true</primary_key>
+					<auto_increment>true</auto_increment>
+				</normal_column>
+				<normal_column>
+					<physical_name>NICKNAME</physical_name>
+					<logical_name>Nickname</logical_name>
+					<type>varchar(n)</type>
+					<length>20</length>
+					<description>Displayed nickname for the account</description>
+					<not_null>true</not_null>
+				</normal_column>
+				<normal_column>
 					<physical_name>PHONE_NUMBER</physical_name>
 					<logical_name>Phone number</logical_name>
 					<type>varchar(n)</type>
 					<length>20</length>
+				</normal_column>
+				<normal_column>
+					<physical_name>DATE_OF_BIRTH_AT</physical_name>
+					<logical_name>Birthdate</logical_name>
+					<type>date</type>
 				</normal_column>
 				<normal_column>
 					<physical_name>ADDRESS</physical_name>
@@ -178,39 +364,17 @@
 					<length>255</length>
 				</normal_column>
 				<normal_column>
-					<physical_name>DATE_OF_BIRTH_AT</physical_name>
-					<logical_name>Birthdate</logical_name>
-					<type>date</type>
-				</normal_column>
-				<normal_column>
 					<physical_name>DISPLAY_LANGUAGE_ID</physical_name>
 					<logical_name>Display language ID</logical_name>
-					<type>integer</type>
-					<args>&quot;japanese&quot;, &quot;english&quot;, &quot;chinese&quot;</args>
+					<referred_column>table.DISPLAY_LANGUAGE.DISPLAY_LANGUAGE_ID</referred_column>
+					<relationship>FK_USER_PROF_DISPLAY_LANGUAGE</relationship>
 					<not_null>true</not_null>
 				</normal_column>
 				<normal_column>
 					<physical_name>COUNTRY_ID</physical_name>
-					<logical_name>Country ID</logical_name>
-					<type>integer</type>
+					<referred_column>table.COUNTRY.COUNTRY_ID</referred_column>
+					<relationship>FK_USER_PROF_COUNTRY</relationship>
 					<not_null>true</not_null>
-				</normal_column>
-				<normal_column>
-					<physical_name>JOIN_DATE_AT</physical_name>
-					<logical_name>Join date</logical_name>
-					<type>datetime</type>
-					<not_null>true</not_null>
-				</normal_column>
-				<normal_column>
-					<physical_name>PORTRAIT</physical_name>
-					<logical_name>Portrait</logical_name>
-					<type>blob</type>
-				</normal_column>
-				<normal_column>
-					<physical_name>BIO</physical_name>
-					<logical_name>biography</logical_name>
-					<type>varchar(n)</type>
-					<length>1023</length>
 				</normal_column>
 				<normal_column>
 					<physical_name>LOCATION</physical_name>
@@ -225,25 +389,21 @@
 					<length>255</length>
 				</normal_column>
 				<normal_column>
+					<physical_name>PORTRAIT</physical_name>
+					<logical_name>Portrait</logical_name>
+					<type>blob</type>
+				</normal_column>
+				<normal_column>
 					<physical_name>HEADER_IMAGE</physical_name>
 					<logical_name>Header image</logical_name>
 					<type>blob</type>
 				</normal_column>
 				<normal_column>
-					<physical_name>LAST_LOGIN_AT</physical_name>
-					<logical_name>Last login</logical_name>
-					<type>datetime</type>
+					<physical_name>BIO</physical_name>
+					<logical_name>biography</logical_name>
+					<type>varchar(n)</type>
+					<length>1023</length>
 				</normal_column>
-				<normal_column>
-					<physical_name>UID</physical_name>
-					<logical_name>User ID</logical_name>
-					<type>bigint</type>
-					<description>Unique UID in database as primary key.</description>
-					<not_null>true</not_null>
-					<primary_key>true</primary_key>
-					<auto_increment>true</auto_increment>
-				</normal_column>
-				<column_group>AUDIT</column_group>
 			</columns>
 			<indexes>
 			</indexes>
