@@ -57,6 +57,7 @@ where MEMBER_NAME like 'S%'
         val results = """
 select * 
 from MEMBER
+where MEMBER_ID = 1
         """.fetch()
 
         // Assert:
