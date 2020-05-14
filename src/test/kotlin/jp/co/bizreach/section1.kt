@@ -86,7 +86,8 @@ where MEMBER_ID = 1
         val results = """
 select * 
 from MEMBER
-
+where BIRTHDATE is null 
+order by UPDATE_DATETIME desc 
         """.fetch()
 
         // Assert:
