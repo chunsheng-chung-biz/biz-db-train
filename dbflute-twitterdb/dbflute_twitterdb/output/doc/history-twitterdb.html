@@ -213,6 +213,124 @@ dl.column-content dd span {
 <p class="sisterlink"><a href="./schema-twitterdb.html">to SchemaHTML</a></p>
 </div>
 
+<div class="section diffCode_20200514015241">
+	<h2>
+		<span class="titlediffno">diffNo. 12:</span> <span class="titlediffdatepart">2020/05/14</span> <span class="titledifftimepart">01:52:41</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4><a href="./schema-twitterdb.html#user">USER</a></h4>
+		<div class="change-table-content">
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>JOIN_DATE_AT</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section diffCode_20200514014910">
+	<h2>
+		<span class="titlediffno">diffNo. 11:</span> <span class="titlediffdatepart">2020/05/14</span> <span class="titledifftimepart">01:49:10</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>DISPLAY_LANGUAGE</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>DISPLAY_LANGUAGE_ID</dt>
+				<dd><span>Identity</span>false&nbsp;-&gt;&nbsp;true</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="section diffCode_20200514013732">
+	<h2>
+		<span class="titlediffno">diffNo. 10:</span> <span class="titlediffdatepart">2020/05/14</span> <span class="titledifftimepart">01:37:32</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>COUNTRY</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>CREATED_AT</li>
+				<li>UPDATED_AT</li>
+			</ul>
+		</div>
+		<h4>DISPLAY_LANGUAGE</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>CREATED_AT</li>
+				<li>UPDATED_AT</li>
+			</ul>
+		</div>
+		<h4>USER_PROF</h4>
+		<div class="change-table-content">
+			<h5>Add Column</h5>
+			<ul class="column-content">
+				<li>CREATED_AT</li>
+				<li>UPDATED_AT</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="section diffCode_20200514013351">
+	<h2>
+		<span class="titlediffno">diffNo. 9:</span> <span class="titlediffdatepart">2020/05/14</span> <span class="titledifftimepart">01:33:51</span>
+		<span class="titlediffauthor">by root</span>
+	</h2>
+	<pre class="diffcomment"></pre>
+	<p class="tablecount">table count: 1&nbsp;-&gt;&nbsp;4</p>
+
+	<h3>Add Table</h3>
+	<ul class="table-content">
+		<li>COUNTRY</li>
+		<li>DISPLAY_LANGUAGE</li>
+		<li>USER_PROF</li>
+	</ul>
+	<h3>Change Table</h3>
+	<div class="table-content">
+		<h4>USER</h4>
+		<div class="change-table-content">
+			<h5>Change Column</h5>
+			<dl class="column-content">
+				<dt>PASSWORD_HASH</dt>
+				<dd><span>Type</span>CHAR&nbsp;-&gt;&nbsp;VARCHAR</dd>
+				<dd><span>Size</span>32&nbsp;-&gt;&nbsp;255</dd>
+			</dl>
+			<h5>Delete Column</h5>
+			<ul class="column-content">
+				<li>NICKNAME</li>
+				<li>USERNAME</li>
+				<li>PHONE_NUMBER</li>
+				<li>ADDRESS</li>
+				<li>DATE_OF_BIRTH_AT</li>
+				<li>DISPLAY_LANGUAGE_ID</li>
+				<li>COUNTRY_ID</li>
+				<li>PORTRAIT</li>
+				<li>BIO</li>
+				<li>LOCATION</li>
+				<li>URL</li>
+				<li>HEADER_IMAGE</li>
+			</ul>
+			<h5>Add UQ</h5>
+			<ul class="column-content">
+				<li>UQ_USER_EMAIL</li>
+			</ul>
+		</div>
+	</div>
+</div>
 <div class="section diffCode_20200513074406">
 	<h2>
 		<span class="titlediffno">diffNo. 8:</span> <span class="titlediffdatepart">2020/05/13</span> <span class="titledifftimepart">07:44:06</span>
@@ -222,7 +340,7 @@ dl.column-content dd span {
 
 	<h3>Change Table</h3>
 	<div class="table-content">
-		<h4><a href="./schema-twitterdb.html#user">USER</a></h4>
+		<h4>USER</h4>
 		<div class="change-table-content">
 			<h5>Delete UQ</h5>
 			<ul class="column-content">
@@ -580,7 +698,23 @@ dl.column-content dd span {
             ]
         };
         this.pickupStore = {
-            '20200513074406' : {
+            '20200514015241' : {
+                'diffDate' : '2020/05/14 01:52:41',
+                'diffComment' : ''
+            }
+            , '20200514014910' : {
+                'diffDate' : '2020/05/14 01:49:10',
+                'diffComment' : ''
+            }
+            , '20200514013732' : {
+                'diffDate' : '2020/05/14 01:37:32',
+                'diffComment' : ''
+            }
+            , '20200514013351' : {
+                'diffDate' : '2020/05/14 01:33:51',
+                'diffComment' : ''
+            }
+            , '20200513074406' : {
                 'diffDate' : '2020/05/13 07:44:06',
                 'diffComment' : ''
             }

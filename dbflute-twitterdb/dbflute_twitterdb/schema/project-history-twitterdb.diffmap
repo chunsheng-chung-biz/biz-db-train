@@ -1,4 +1,182 @@
 map:{
+    ; 2020/05/14 01:52:41 = map:{
+        ; diffDate = 2020/05/14 01:52:41
+        ; diffAuthor = root
+        ; tableDiff = map:{
+            ; USER = map:{
+                ; tableName = USER
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; JOIN_DATE_AT = map:{
+                        ; columnName = JOIN_DATE_AT
+                        ; diffType = DELETE
+                    }
+                }
+            }
+        }
+    }
+    ; 2020/05/14 01:49:10 = map:{
+        ; diffDate = 2020/05/14 01:49:10
+        ; diffAuthor = root
+        ; tableDiff = map:{
+            ; DISPLAY_LANGUAGE = map:{
+                ; tableName = DISPLAY_LANGUAGE
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; DISPLAY_LANGUAGE_ID = map:{
+                        ; columnName = DISPLAY_LANGUAGE_ID
+                        ; diffType = CHANGE
+                        ; autoIncrementDiff = map:{
+                            ; next = true
+                            ; previous = false
+                        }
+                    }
+                }
+            }
+        }
+    }
+    ; 2020/05/14 01:37:32 = map:{
+        ; diffDate = 2020/05/14 01:37:32
+        ; diffAuthor = root
+        ; tableDiff = map:{
+            ; COUNTRY = map:{
+                ; tableName = COUNTRY
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; CREATED_AT = map:{
+                        ; columnName = CREATED_AT
+                        ; diffType = ADD
+                    }
+                    ; UPDATED_AT = map:{
+                        ; columnName = UPDATED_AT
+                        ; diffType = ADD
+                    }
+                }
+            }
+            ; DISPLAY_LANGUAGE = map:{
+                ; tableName = DISPLAY_LANGUAGE
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; CREATED_AT = map:{
+                        ; columnName = CREATED_AT
+                        ; diffType = ADD
+                    }
+                    ; UPDATED_AT = map:{
+                        ; columnName = UPDATED_AT
+                        ; diffType = ADD
+                    }
+                }
+            }
+            ; USER_PROF = map:{
+                ; tableName = USER_PROF
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; CREATED_AT = map:{
+                        ; columnName = CREATED_AT
+                        ; diffType = ADD
+                    }
+                    ; UPDATED_AT = map:{
+                        ; columnName = UPDATED_AT
+                        ; diffType = ADD
+                    }
+                }
+            }
+        }
+    }
+    ; 2020/05/14 01:33:51 = map:{
+        ; diffDate = 2020/05/14 01:33:51
+        ; tableCount = map:{
+            ; next = 4
+            ; previous = 1
+        }
+        ; diffAuthor = root
+        ; tableDiff = map:{
+            ; COUNTRY = map:{
+                ; tableName = COUNTRY
+                ; diffType = ADD
+            }
+            ; DISPLAY_LANGUAGE = map:{
+                ; tableName = DISPLAY_LANGUAGE
+                ; diffType = ADD
+            }
+            ; USER_PROF = map:{
+                ; tableName = USER_PROF
+                ; diffType = ADD
+            }
+            ; USER = map:{
+                ; tableName = USER
+                ; diffType = CHANGE
+                ; columnDiff = map:{
+                    ; PASSWORD_HASH = map:{
+                        ; columnName = PASSWORD_HASH
+                        ; diffType = CHANGE
+                        ; dbTypeDiff = map:{
+                            ; next = VARCHAR
+                            ; previous = CHAR
+                        }
+                        ; columnSizeDiff = map:{
+                            ; next = 255
+                            ; previous = 32
+                        }
+                    }
+                    ; NICKNAME = map:{
+                        ; columnName = NICKNAME
+                        ; diffType = DELETE
+                    }
+                    ; USERNAME = map:{
+                        ; columnName = USERNAME
+                        ; diffType = DELETE
+                    }
+                    ; PHONE_NUMBER = map:{
+                        ; columnName = PHONE_NUMBER
+                        ; diffType = DELETE
+                    }
+                    ; ADDRESS = map:{
+                        ; columnName = ADDRESS
+                        ; diffType = DELETE
+                    }
+                    ; DATE_OF_BIRTH_AT = map:{
+                        ; columnName = DATE_OF_BIRTH_AT
+                        ; diffType = DELETE
+                    }
+                    ; DISPLAY_LANGUAGE_ID = map:{
+                        ; columnName = DISPLAY_LANGUAGE_ID
+                        ; diffType = DELETE
+                    }
+                    ; COUNTRY_ID = map:{
+                        ; columnName = COUNTRY_ID
+                        ; diffType = DELETE
+                    }
+                    ; PORTRAIT = map:{
+                        ; columnName = PORTRAIT
+                        ; diffType = DELETE
+                    }
+                    ; BIO = map:{
+                        ; columnName = BIO
+                        ; diffType = DELETE
+                    }
+                    ; LOCATION = map:{
+                        ; columnName = LOCATION
+                        ; diffType = DELETE
+                    }
+                    ; URL = map:{
+                        ; columnName = URL
+                        ; diffType = DELETE
+                    }
+                    ; HEADER_IMAGE = map:{
+                        ; columnName = HEADER_IMAGE
+                        ; diffType = DELETE
+                    }
+                }
+                ; uniqueKeyDiff = map:{
+                    ; UQ_USER_EMAIL = map:{
+                        ; constraintName = UQ_USER_EMAIL
+                        ; diffType = ADD
+                    }
+                }
+            }
+        }
+    }
     ; 2020/05/13 07:44:06 = map:{
         ; diffDate = 2020/05/13 07:44:06
         ; diffAuthor = root

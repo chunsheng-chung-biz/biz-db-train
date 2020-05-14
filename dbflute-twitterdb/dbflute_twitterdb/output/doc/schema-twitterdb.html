@@ -516,19 +516,268 @@ pre.spolicyviodisp {
 	<tbody id="table-list-body">
 	<tr>
 		<td class="rownumcell">1</td>
-		<td class="aliascell">User</td>
-		<td class="namecell" data-name="USER"><a href="#user" title="type=TABLE, primaryKey={UID}, nameLength=4, columnCount=20">USER</a></td>
+		<td class="aliascell">Country</td>
+		<td class="namecell" data-name="COUNTRY"><a href="#country" title="type=TABLE, primaryKey={COUNTRY_ID}, nameLength=7, columnCount=4">COUNTRY</a></td>
 		<td class="typecell">TABLE</td>
 		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_COUNTRY">USER_PROF</a></td>
+		<td class="commentcell COUNTRY_comment"><pre>Global country table for the system.</pre></td>
+		<td class="subcell">Country</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="aliascell">Didsplay Language</td>
+		<td class="namecell" data-name="DISPLAY_LANGUAGE"><a href="#display_language" title="type=TABLE, primaryKey={DISPLAY_LANGUAGE_ID}, nameLength=16, columnCount=4">DISPLAY_LANGUAGE</a></td>
+		<td class="typecell">TABLE</td>
 		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_DISPLAY_LANGUAGE">USER_PROF</a></td>
+		<td class="commentcell DISPLAY_LANGUAGE_comment"><pre>Global language table for the system.</pre></td>
+		<td class="subcell">DisplayLanguage</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="aliascell">User</td>
+		<td class="namecell" data-name="USER"><a href="#user" title="type=TABLE, primaryKey={UID}, nameLength=4, columnCount=7">USER</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_USER">USER_PROF</a></td>
 		<td class="commentcell USER_comment"><pre>User information</pre></td>
 		<td class="subcell">User</td>
 		<td class="subcell">2020/04/16</td>
 	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="aliascell">User Profile</td>
+		<td class="namecell" data-name="USER_PROF"><a href="#user_prof" title="type=TABLE, primaryKey={USER_PROF_ID}, nameLength=9, columnCount=15">USER_PROF</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell"><a href="#country" title="FK_USER_PROF_COUNTRY">COUNTRY</a>, <a href="#display_language" title="FK_USER_PROF_DISPLAY_LANGUAGE">DISPLAY_LANGUAGE</a>, <a href="#user" title="FK_USER_PROF_USER">USER</a></td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell USER_PROF_comment"><pre>Profile of user account.</pre></td>
+		<td class="subcell">UserProf</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
 	</tbody>
 </table>
 
-<h2 id="user" title="type=TABLE, primaryKey={UID}, nameLength=4, columnCount=20">
+<h2 id="country" title="type=TABLE, primaryKey={COUNTRY_ID}, nameLength=7, columnCount=4">
+(Country)COUNTRY
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment COUNTRY_comment" data-name="COUNTRY"><pre>Global country table for the system.</pre></div>
+<input type="hidden" value="COUNTRY">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="country-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Country ID</td>
+		<td class=" columnnamecell" id="country_country_id">COUNTRY_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_COUNTRY">USER_PROF</a>&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">countryId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Country Name</td>
+		<td class=" columnnamecell" id="country_country_name">COUNTRY_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">countryName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="country_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="country_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="display_language" title="type=TABLE, primaryKey={DISPLAY_LANGUAGE_ID}, nameLength=16, columnCount=4">
+(Didsplay Language)DISPLAY_LANGUAGE
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment DISPLAY_LANGUAGE_comment" data-name="DISPLAY_LANGUAGE"><pre>Global language table for the system.</pre></div>
+<input type="hidden" value="DISPLAY_LANGUAGE">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="display_language-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Display Language ID</td>
+		<td class=" columnnamecell" id="display_language_display_language_id">DISPLAY_LANGUAGE_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_DISPLAY_LANGUAGE">USER_PROF</a>&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">displayLanguageId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Display Language Name</td>
+		<td class=" columnnamecell" id="display_language_display_language_name">DISPLAY_LANGUAGE_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">displayLanguageName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="display_language_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="display_language_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="user" title="type=TABLE, primaryKey={UID}, nameLength=4, columnCount=7">
 (User)USER
 &nbsp;<span class="tablefirstdatetitle">since 2020/04/16</span>
 </h2>
@@ -559,28 +808,28 @@ pre.spolicyviodisp {
 	<tbody id="user-body">
 	<tr>
 		<td class="rownumcell">1</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class="aliascell">Nickname</td>
-		<td class=" columnnamecell" id="user_nickname">NICKNAME</td>
-		<td class="typecell">VARCHAR</td>
-		<td class="sizecell"> 20 </td>
+		<td class="aliascell">User ID</td>
+		<td class=" columnnamecell" id="user_uid">UID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
 		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_USER">USER_PROF</a>&nbsp;</td>
 		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>Displayed nickname for the account</pre></td>
-		<td class="subcell">nickname</td>
-		<td class="subcell">String</td>
-		<td class="subcell">first</td>
+		<td class="commentcell"><pre>Unique UID in database as primary key.</pre></td>
+		<td class="subcell">uid</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">2020/05/13</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">2</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="UQ_USER_EMAIL(EMAIL)">o</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
 		<td class="aliascell">Email address</td>
@@ -602,29 +851,10 @@ pre.spolicyviodisp {
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class="aliascell">Username</td>
-		<td class=" columnnamecell" id="user_username">USERNAME</td>
-		<td class="typecell">VARCHAR</td>
-		<td class="sizecell"> 20 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>Unique user id for @ mention etc.</pre></td>
-		<td class="subcell">username</td>
-		<td class="subcell">String</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">4</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
 		<td class="aliascell">Hashed password</td>
 		<td class=" columnnamecell" id="user_password_hash">PASSWORD_HASH</td>
-		<td class="typecell">CHAR</td>
-		<td class="sizecell"> 32 </td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 255 </td>
 		<td class="relcell">&nbsp;&nbsp;</td>
 		<td class="relcell">&nbsp;</td>
 		<td class="relcell"> &nbsp;</td>
@@ -634,7 +864,7 @@ pre.spolicyviodisp {
 		<td class="subcell">first</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">5</td>
+		<td class="rownumcell">4</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -653,216 +883,7 @@ pre.spolicyviodisp {
 		<td class="subcell">first</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">6</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">Phone number</td>
-		<td class=" columnnamecell" id="user_phone_number">PHONE_NUMBER</td>
-		<td class="typecell">VARCHAR</td>
-		<td class="sizecell"> 20 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">phoneNumber</td>
-		<td class="subcell">String</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">7</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">Address</td>
-		<td class=" columnnamecell" id="user_address">ADDRESS</td>
-		<td class="typecell">VARCHAR</td>
-		<td class="sizecell"> 255 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">address</td>
-		<td class="subcell">String</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">8</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">Birthdate</td>
-		<td class=" columnnamecell" id="user_date_of_birth_at">DATE_OF_BIRTH_AT</td>
-		<td class="typecell">DATE</td>
-		<td class="sizecell"> 10 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">dateOfBirthAt</td>
-		<td class="subcell">LocalDate</td>
-		<td class="subcell">2020/05/13</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">9</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
-		<td class="aliascell">Display language ID</td>
-		<td class=" columnnamecell" id="user_display_language_id">DISPLAY_LANGUAGE_ID</td>
-		<td class="typecell">INT</td>
-		<td class="sizecell"> 10 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">displayLanguageId</td>
-		<td class="subcell">Integer</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">10</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
-		<td class="aliascell">Country ID</td>
-		<td class=" columnnamecell" id="user_country_id">COUNTRY_ID</td>
-		<td class="typecell">INT</td>
-		<td class="sizecell"> 10 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">countryId</td>
-		<td class="subcell">Integer</td>
-		<td class="subcell">2020/05/13</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">11</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
-		<td class="aliascell">Join date</td>
-		<td class=" columnnamecell" id="user_join_date_at">JOIN_DATE_AT</td>
-		<td class="typecell">DATETIME</td>
-		<td class="sizecell"> 19 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">joinDateAt</td>
-		<td class="subcell">LocalDateTime</td>
-		<td class="subcell">2020/05/13</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">12</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">Portrait</td>
-		<td class=" columnnamecell" id="user_portrait">PORTRAIT</td>
-		<td class="typecell">BLOB</td>
-		<td class="sizecell"> 65535 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">portrait</td>
-		<td class="subcell">byte[]</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">13</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">biography</td>
-		<td class=" columnnamecell" id="user_bio">BIO</td>
-		<td class="typecell">VARCHAR</td>
-		<td class="sizecell"> 1023 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">bio</td>
-		<td class="subcell">String</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">14</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">Location</td>
-		<td class=" columnnamecell" id="user_location">LOCATION</td>
-		<td class="typecell">VARCHAR</td>
-		<td class="sizecell"> 127 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">location</td>
-		<td class="subcell">String</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">15</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">URL</td>
-		<td class=" columnnamecell" id="user_url">URL</td>
-		<td class="typecell">VARCHAR</td>
-		<td class="sizecell"> 255 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">url</td>
-		<td class="subcell">String</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">16</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell"> &nbsp;</td>
-		<td class="aliascell">Header image</td>
-		<td class=" columnnamecell" id="user_header_image">HEADER_IMAGE</td>
-		<td class="typecell">BLOB</td>
-		<td class="sizecell"> 65535 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">headerImage</td>
-		<td class="subcell">byte[]</td>
-		<td class="subcell">first</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">17</td>
+		<td class="rownumcell">5</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
@@ -881,32 +902,13 @@ pre.spolicyviodisp {
 		<td class="subcell">2020/05/13</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">18</td>
-		<td class="flgcell" title="PRIMARY">o</td>
-		<td class="flgcell">o</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">&nbsp;</td>
-		<td class="flgcell">*</td>
-		<td class="aliascell">User ID</td>
-		<td class=" columnnamecell" id="user_uid">UID</td>
-		<td class="typecell">BIGINT</td>
-		<td class="sizecell"> 19 </td>
-		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
-		<td class="relcell"> &nbsp;</td>
-		<td class="commentcell"><pre>Unique UID in database as primary key.</pre></td>
-		<td class="subcell">uid</td>
-		<td class="subcell">Long</td>
-		<td class="subcell">2020/05/13</td>
-	</tr>
-	<tr>
-		<td class="rownumcell">19</td>
+		<td class="rownumcell">6</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class="aliascell comcolcell">Table creation date</td>
+		<td class="aliascell comcolcell">Record creation date</td>
 		<td class="comcolcell columnnamecell" id="user_created_at">CREATED_AT</td>
 		<td class="typecell">DATETIME</td>
 		<td class="sizecell"> 19 </td>
@@ -919,13 +921,13 @@ pre.spolicyviodisp {
 		<td class="subcell">2020/05/13</td>
 	</tr>
 	<tr>
-		<td class="rownumcell">20</td>
+		<td class="rownumcell">7</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell"> &nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class="aliascell comcolcell">Table update date</td>
+		<td class="aliascell comcolcell">Record update date</td>
 		<td class="comcolcell columnnamecell" id="user_updated_at">UPDATED_AT</td>
 		<td class="typecell">DATETIME</td>
 		<td class="sizecell"> 19 </td>
@@ -936,6 +938,323 @@ pre.spolicyviodisp {
 		<td class="subcell">updatedAt</td>
 		<td class="subcell">LocalDateTime</td>
 		<td class="subcell">2020/05/13</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="user_prof" title="type=TABLE, primaryKey={USER_PROF_ID}, nameLength=9, columnCount=15">
+(User Profile)USER_PROF
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment USER_PROF_comment" data-name="USER_PROF"><pre>Profile of user account.</pre></div>
+<input type="hidden" value="USER_PROF">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="user_prof-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">User Profile ID</td>
+		<td class=" columnnamecell" id="user_prof_user_prof_id">USER_PROF_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#user" title="FK_USER_PROF_USER">USER</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Unique UID in database as primary key.</pre></td>
+		<td class="subcell">userProfId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="UQ_USER_PROF_USERNAME(USERNAME)">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Username</td>
+		<td class=" columnnamecell" id="user_prof_username">USERNAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 20 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Unique user id for @ mention etc.</pre></td>
+		<td class="subcell">username</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Nickname</td>
+		<td class=" columnnamecell" id="user_prof_nickname">NICKNAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 20 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Displayed nickname for the account</pre></td>
+		<td class="subcell">nickname</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Phone number</td>
+		<td class=" columnnamecell" id="user_prof_phone_number">PHONE_NUMBER</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 20 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">phoneNumber</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Birthdate</td>
+		<td class=" columnnamecell" id="user_prof_date_of_birth_at">DATE_OF_BIRTH_AT</td>
+		<td class="typecell">DATE</td>
+		<td class="sizecell"> 10 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">dateOfBirthAt</td>
+		<td class="subcell">LocalDate</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">6</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Address</td>
+		<td class=" columnnamecell" id="user_prof_address">ADDRESS</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 255 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">address</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">7</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="FK_USER_PROF_DISPLAY_LANGUAGE(DISPLAY_LANGUAGE_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Display Language ID</td>
+		<td class=" columnnamecell" id="user_prof_display_language_id">DISPLAY_LANGUAGE_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#display_language" title="FK_USER_PROF_DISPLAY_LANGUAGE">DISPLAY_LANGUAGE</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">displayLanguageId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">8</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="FK_USER_PROF_COUNTRY(COUNTRY_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Country ID</td>
+		<td class=" columnnamecell" id="user_prof_country_id">COUNTRY_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#country" title="FK_USER_PROF_COUNTRY">COUNTRY</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">countryId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">9</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Location</td>
+		<td class=" columnnamecell" id="user_prof_location">LOCATION</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 127 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">location</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">10</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">URL</td>
+		<td class=" columnnamecell" id="user_prof_url">URL</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 255 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">url</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">11</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Portrait</td>
+		<td class=" columnnamecell" id="user_prof_portrait">PORTRAIT</td>
+		<td class="typecell">BLOB</td>
+		<td class="sizecell"> 65535 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">portrait</td>
+		<td class="subcell">byte[]</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">12</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Header image</td>
+		<td class=" columnnamecell" id="user_prof_header_image">HEADER_IMAGE</td>
+		<td class="typecell">BLOB</td>
+		<td class="sizecell"> 65535 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">headerImage</td>
+		<td class="subcell">byte[]</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">13</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">biography</td>
+		<td class=" columnnamecell" id="user_prof_bio">BIO</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 1023 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">bio</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">14</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="user_prof_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">15</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="user_prof_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
 	</tr>
 	</tbody>
 </table>
@@ -1501,17 +1820,48 @@ function StoreClient() {
 		]
 	}
 	this.pickupStore = {
-		'USER': {
+		'COUNTRY': {
+			'databaseComment': 'Global&nbsp;country&nbsp;table&nbsp;for&nbsp;the&nbsp;system.'
+			, 'columns': {
+				'COUNTRY_ID': {
+					'databaseComment': ''
+				}
+				, 'COUNTRY_NAME': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'DISPLAY_LANGUAGE': {
+			'databaseComment': 'Global&nbsp;language&nbsp;table&nbsp;for&nbsp;the&nbsp;system.'
+			, 'columns': {
+				'DISPLAY_LANGUAGE_ID': {
+					'databaseComment': ''
+				}
+				, 'DISPLAY_LANGUAGE_NAME': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'USER': {
 			'databaseComment': 'User&nbsp;information'
 			, 'columns': {
-				'NICKNAME': {
-					'databaseComment': 'Displayed&nbsp;nickname&nbsp;for&nbsp;the&nbsp;account'
+				'UID': {
+					'databaseComment': 'Unique&nbsp;UID&nbsp;in&nbsp;database&nbsp;as&nbsp;primary&nbsp;key.'
 				}
 				, 'EMAIL': {
 					'databaseComment': 'Email&nbsp;address&nbsp;of&nbsp;the&nbsp;user.&nbsp;Also&nbsp;used&nbsp;as&nbsp;login&nbsp;information.'
-				}
-				, 'USERNAME': {
-					'databaseComment': 'Unique&nbsp;user&nbsp;id&nbsp;for&nbsp;@&nbsp;mention&nbsp;etc.'
 				}
 				, 'PASSWORD_HASH': {
 					'databaseComment': ''
@@ -1519,13 +1869,36 @@ function StoreClient() {
 				, 'PASSWORD_SALT': {
 					'databaseComment': 'Random&nbsp;password&nbsp;salt&nbsp;for&nbsp;each&nbsp;user'
 				}
+				, 'LAST_LOGIN_AT': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'USER_PROF': {
+			'databaseComment': 'Profile&nbsp;of&nbsp;user&nbsp;account.'
+			, 'columns': {
+				'USER_PROF_ID': {
+					'databaseComment': 'Unique&nbsp;UID&nbsp;in&nbsp;database&nbsp;as&nbsp;primary&nbsp;key.'
+				}
+				, 'USERNAME': {
+					'databaseComment': 'Unique&nbsp;user&nbsp;id&nbsp;for&nbsp;@&nbsp;mention&nbsp;etc.'
+				}
+				, 'NICKNAME': {
+					'databaseComment': 'Displayed&nbsp;nickname&nbsp;for&nbsp;the&nbsp;account'
+				}
 				, 'PHONE_NUMBER': {
 					'databaseComment': ''
 				}
-				, 'ADDRESS': {
+				, 'DATE_OF_BIRTH_AT': {
 					'databaseComment': ''
 				}
-				, 'DATE_OF_BIRTH_AT': {
+				, 'ADDRESS': {
 					'databaseComment': ''
 				}
 				, 'DISPLAY_LANGUAGE_ID': {
@@ -1534,29 +1907,20 @@ function StoreClient() {
 				, 'COUNTRY_ID': {
 					'databaseComment': ''
 				}
-				, 'JOIN_DATE_AT': {
-					'databaseComment': ''
-				}
-				, 'PORTRAIT': {
-					'databaseComment': ''
-				}
-				, 'BIO': {
-					'databaseComment': ''
-				}
 				, 'LOCATION': {
 					'databaseComment': ''
 				}
 				, 'URL': {
 					'databaseComment': ''
 				}
+				, 'PORTRAIT': {
+					'databaseComment': ''
+				}
 				, 'HEADER_IMAGE': {
 					'databaseComment': ''
 				}
-				, 'LAST_LOGIN_AT': {
+				, 'BIO': {
 					'databaseComment': ''
-				}
-				, 'UID': {
-					'databaseComment': 'Unique&nbsp;UID&nbsp;in&nbsp;database&nbsp;as&nbsp;primary&nbsp;key.'
 				}
 				, 'CREATED_AT': {
 					'databaseComment': ''
