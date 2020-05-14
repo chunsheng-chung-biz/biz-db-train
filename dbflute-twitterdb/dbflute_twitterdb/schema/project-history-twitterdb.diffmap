@@ -1,4 +1,34 @@
 map:{
+    ; 2020/05/14 05:36:13 = map:{
+        ; diffDate = 2020/05/14 05:36:13
+        ; tableCount = map:{
+            ; next = 9
+            ; previous = 4
+        }
+        ; diffAuthor = root
+        ; tableDiff = map:{
+            ; BROWSER = map:{
+                ; tableName = BROWSER
+                ; diffType = ADD
+            }
+            ; BROWSER_USER = map:{
+                ; tableName = BROWSER_USER
+                ; diffType = ADD
+            }
+            ; FOLLOW = map:{
+                ; tableName = FOLLOW
+                ; diffType = ADD
+            }
+            ; TWEET = map:{
+                ; tableName = TWEET
+                ; diffType = ADD
+            }
+            ; TWEET_IMAGE = map:{
+                ; tableName = TWEET_IMAGE
+                ; diffType = ADD
+            }
+        }
+    }
     ; 2020/05/14 01:52:41 = map:{
         ; diffDate = 2020/05/14 01:52:41
         ; diffAuthor = root

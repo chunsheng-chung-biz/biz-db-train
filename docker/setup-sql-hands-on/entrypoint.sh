@@ -71,3 +71,6 @@ EOF
 ./dbflute_maihamadb/manage.sh replace-schema << EOF
 y
 EOF
+
+./dbflute_maihamadb/manage.sh jdbc
+ ./dbflute_maihamadb/manage.sh doc
