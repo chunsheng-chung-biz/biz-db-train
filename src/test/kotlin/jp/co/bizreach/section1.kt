@@ -27,7 +27,7 @@ class Section1 {
         val results = """
 select *
 from MEMBER
-
+where MEMBER_NAME like 'S%'
         """.fetch()
 
         // Assert:
@@ -85,6 +85,7 @@ from MEMBER
         val results = """
 select * 
 from MEMBER
+
         """.fetch()
 
         // Assert:
