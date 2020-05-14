@@ -27,8 +27,12 @@ class Section2 {
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
-from MEMBER
+select MEMBER.*, MEMBER_STATUS.*
+from MEMBER, MEMBER_STATUS
+where MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+  and MEMBER_NAME like 'S%'
+  and BIRTHDATE <= '19680101'
+order by BIRTHDATE asc
         """.fetch()
 
         // Assert:
