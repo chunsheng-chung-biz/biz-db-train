@@ -59,8 +59,12 @@ order by BIRTHDATE asc
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
-from MEMBER
+select MEMBER.*, MEMBER_STATUS.*, MEMBER_SECURITY.*
+from MEMBER, MEMBER_STATUS, MEMBER_SECURITY
+WHERE MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+  and MEMBER.MEMBER_ID = MEMBER_SECURITY.MEMBER_ID
+order by MEMBER.BIRTHDATE desc,
+  MEMBER.MEMBER_ID asc
         """.fetch()
 
         // Assert:
