@@ -73,4 +73,4 @@ y
 EOF
 
 ./dbflute_maihamadb/manage.sh jdbc
- ./dbflute_maihamadb/manage.sh doc
+./dbflute_maihamadb/manage.sh doc
