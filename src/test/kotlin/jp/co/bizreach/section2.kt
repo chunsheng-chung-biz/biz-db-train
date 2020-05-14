@@ -127,7 +127,10 @@ where MEMBER.MEMBER_ID = MEMBER_SECURITY.MEMBER_ID
         // language=SQL
         val results = """
 select MEMBER.*
-from MEMBER
+from MEMBER, MEMBER_STATUS
+where MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+order by MEMBER_STATUS.DISPLAY_ORDER asc,
+  MEMBER.MEMBER_ID desc
         """.fetch()
 
         // Assert:
