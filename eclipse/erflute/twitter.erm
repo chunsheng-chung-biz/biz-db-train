@@ -109,13 +109,13 @@
 		<table>
 			<physical_name>COUNTRY</physical_name>
 			<logical_name>Country</logical_name>
-			<description></description>
-			<height>75</height>
-			<width>185</width>
+			<description>Global country table for the system.</description>
+			<height>98</height>
+			<width>187</width>
 			<font_name>.AppleSystemUIFont</font_name>
 			<font_size>9</font_size>
-			<x>112</x>
-			<y>543</y>
+			<x>107</x>
+			<y>376</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -138,8 +138,18 @@
 					<type>varchar(n)</type>
 					<length>100</length>
 				</normal_column>
+				<column_group>AUDIT</column_group>
 			</columns>
 			<indexes>
+				<index>
+					<name>UQ_COUNTRY_COUNTRY_ID</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.COUNTRY.COUNTRY_ID</column_id>
+						</column>
+					</columns>
+				</index>
 			</indexes>
 			<compound_unique_key_list>
 			</compound_unique_key_list>
@@ -149,13 +159,13 @@
 		<table>
 			<physical_name>DISPLAY_LANGUAGE</physical_name>
 			<logical_name>Didsplay Language</logical_name>
-			<description></description>
+			<description>Global language table for the system.</description>
 			<height>75</height>
-			<width>233</width>
+			<width>234</width>
 			<font_name>.AppleSystemUIFont</font_name>
 			<font_size>9</font_size>
-			<x>323</x>
-			<y>536</y>
+			<x>613</x>
+			<y>389</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -170,6 +180,7 @@
 					<type>bigint</type>
 					<not_null>true</not_null>
 					<primary_key>true</primary_key>
+					<auto_increment>true</auto_increment>
 				</normal_column>
 				<normal_column>
 					<physical_name>DISPLAY_LANGUAGE_NAME</physical_name>
@@ -178,8 +189,18 @@
 					<length>100</length>
 					<not_null>true</not_null>
 				</normal_column>
+				<column_group>AUDIT</column_group>
 			</columns>
 			<indexes>
+				<index>
+					<name>UQ_DISPLAY_LANGUAGE_DISPLAY_LANGUAGE_ID</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.DISPLAY_LANGUAGE.DISPLAY_LANGUAGE_ID</column_id>
+						</column>
+					</columns>
+				</index>
 			</indexes>
 			<compound_unique_key_list>
 			</compound_unique_key_list>
@@ -190,12 +211,12 @@
 			<physical_name>USER</physical_name>
 			<logical_name>User</logical_name>
 			<description>User information</description>
-			<height>402</height>
-			<width>191</width>
+			<height>256</height>
+			<width>193</width>
 			<font_name>.AppleSystemUIFont</font_name>
 			<font_size>9</font_size>
-			<x>317</x>
-			<y>88</y>
+			<x>360</x>
+			<y>19</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -223,15 +244,6 @@
 					<unique_key_name>UQ_USER_EMAIL</unique_key_name>
 				</normal_column>
 				<normal_column>
-					<physical_name>USERNAME</physical_name>
-					<logical_name>Username</logical_name>
-					<type>varchar(n)</type>
-					<length>20</length>
-					<description>Unique user id for @ mention etc.</description>
-					<not_null>true</not_null>
-					<unique_key_name>UQ_USER_USERNAME</unique_key_name>
-				</normal_column>
-				<normal_column>
 					<physical_name>PASSWORD_HASH</physical_name>
 					<logical_name>Hashed password</logical_name>
 					<type>varchar(n)</type>
@@ -247,12 +259,6 @@
 					<not_null>true</not_null>
 				</normal_column>
 				<normal_column>
-					<physical_name>JOIN_DATE_AT</physical_name>
-					<logical_name>Join date</logical_name>
-					<type>datetime</type>
-					<not_null>true</not_null>
-				</normal_column>
-				<normal_column>
 					<physical_name>LAST_LOGIN_AT</physical_name>
 					<logical_name>Last login</logical_name>
 					<type>datetime</type>
@@ -260,6 +266,24 @@
 				<column_group>AUDIT</column_group>
 			</columns>
 			<indexes>
+				<index>
+					<name>UQ_USER_UID</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.USER.UID</column_id>
+						</column>
+					</columns>
+				</index>
+				<index>
+					<name>UQ_USER_EMAIL</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.USER.EMAIL</column_id>
+						</column>
+					</columns>
+				</index>
 			</indexes>
 			<compound_unique_key_list>
 			</compound_unique_key_list>
@@ -269,13 +293,13 @@
 		<table>
 			<physical_name>USER_PROF</physical_name>
 			<logical_name>User Profile</logical_name>
-			<description></description>
-			<height>239</height>
-			<width>180</width>
+			<description>Profile of user account.</description>
+			<height>246</height>
+			<width>181</width>
 			<font_name>.AppleSystemUIFont</font_name>
 			<font_size>9</font_size>
-			<x>118</x>
-			<y>244</y>
+			<x>367</x>
+			<y>298</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -339,6 +363,15 @@
 					<auto_increment>true</auto_increment>
 				</normal_column>
 				<normal_column>
+					<physical_name>USERNAME</physical_name>
+					<logical_name>Username</logical_name>
+					<type>varchar(n)</type>
+					<length>20</length>
+					<description>Unique user id for @ mention etc.</description>
+					<not_null>true</not_null>
+					<unique_key_name>UQ_USER_USERNAME</unique_key_name>
+				</normal_column>
+				<normal_column>
 					<physical_name>NICKNAME</physical_name>
 					<logical_name>Nickname</logical_name>
 					<type>varchar(n)</type>
@@ -365,7 +398,6 @@
 				</normal_column>
 				<normal_column>
 					<physical_name>DISPLAY_LANGUAGE_ID</physical_name>
-					<logical_name>Display language ID</logical_name>
 					<referred_column>table.DISPLAY_LANGUAGE.DISPLAY_LANGUAGE_ID</referred_column>
 					<relationship>FK_USER_PROF_DISPLAY_LANGUAGE</relationship>
 					<not_null>true</not_null>
@@ -404,8 +436,27 @@
 					<type>varchar(n)</type>
 					<length>1023</length>
 				</normal_column>
+				<column_group>AUDIT</column_group>
 			</columns>
 			<indexes>
+				<index>
+					<name>UQ_USER_PROF_USER_PROF_ID</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.USER_PROF.USER_PROF_ID</column_id>
+						</column>
+					</columns>
+				</index>
+				<index>
+					<name>UQ_USER_PROF_USERNAME</name>
+					<type>BTREE</type>
+					<columns>
+						<column>
+							<column_id>table.USER_PROF.USERNAME</column_id>
+						</column>
+					</columns>
+				</index>
 			</indexes>
 			<compound_unique_key_list>
 			</compound_unique_key_list>
@@ -437,13 +488,13 @@
 			<columns>
 				<normal_column>
 					<physical_name>CREATED_AT</physical_name>
-					<logical_name>Table creation date</logical_name>
+					<logical_name>Record creation date</logical_name>
 					<type>datetime</type>
 					<not_null>true</not_null>
 				</normal_column>
 				<normal_column>
 					<physical_name>UPDATED_AT</physical_name>
-					<logical_name>Table update date</logical_name>
+					<logical_name>Record update date</logical_name>
 					<type>datetime</type>
 					<not_null>true</not_null>
 				</normal_column>
