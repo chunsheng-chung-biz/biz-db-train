@@ -27,6 +27,7 @@ class Section1 {
         val results = """
 select *
 from MEMBER
+
         """.fetch()
 
         // Assert:
