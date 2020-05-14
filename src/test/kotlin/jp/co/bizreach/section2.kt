@@ -92,8 +92,10 @@ order by MEMBER.BIRTHDATE desc,
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
-from MEMBER
+select MEMBER.*, MEMBER_SECURITY.REMINDER_QUESTION
+from MEMBER, MEMBER_SECURITY
+where MEMBER.MEMBER_ID = MEMBER_SECURITY.MEMBER_ID
+  and MEMBER_SECURITY.REMINDER_QUESTION like '%2%'
         """.fetch()
 
         // Assert:
