@@ -207,10 +207,14 @@ order by PURCHASE.PURCHASE_DATETIME desc,
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
+select MEMBER.*, MEMBER_STATUS.MEMBER_STATUS_NAME
 from MEMBER 
-where :from <= UPDATE_DATETIME
-""".fetch("from" to fromParam)
+inner join MEMBER_STATUS
+  on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+where MEMBER.MEMBER_NAME like '%vi%'
+  and :from <= MEMBER.FORMALIZED_DATETIME
+  and :to > MEMBER.FORMALIZED_DATETIME
+""".fetch("from" to fromParam, "to" to toParam)
 
         // Assert:
         assertStep6(results)
