@@ -493,26 +493,6 @@ pre.spolicyviodisp {
 	<button id="column-mapping-submit-button">Mapping</button>
 </div>
 
-<h2 id="schemapolicyvio">SchemaPolicy Violation</h2>
-<pre class="spolicyviodisp">
-Look! Read the message below.
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-The schema policy has been violated.
-
-[Advice]
-Make sure your violating schema (ERD and DDL).
-You can see violations on this message or SchemaHTML.
-And after that, execute renewal (or regenerate) again.
-(tips: The schema policy is on schemaPolicyMap.dfprop)
-
-[Violation]
-column.theme: hasAlias
- |-The column should have column alias: (サンプルのテーブル)SAMPLE.SAMPLE_ID BIGINT(19) (NotNull)
- |-The column should have column alias: (サンプルのテーブル)SAMPLE.CREATED_AT DATETIME(19) (NotNull)
- +-The column should have column alias: (サンプルのテーブル)SAMPLE.UPDATED_AT DATETIME(19) (NotNull)
-* * * * * * * * * */
-</pre>
-
 <h2>Table List</h2>
 <div class="keywordsearch">
 	<input type="text" id="incremental-search-field" tabindex=1 value="" placeholder="Table Search" />
@@ -536,24 +516,112 @@ column.theme: hasAlias
 	<tbody id="table-list-body">
 	<tr>
 		<td class="rownumcell">1</td>
-		<td class="aliascell">サンプルのテーブル</td>
-		<td class="namecell" data-name="SAMPLE"><a href="#sample" title="type=TABLE, primaryKey={SAMPLE_ID}, nameLength=6, columnCount=3">SAMPLE</a></td>
+		<td class="aliascell">Browser</td>
+		<td class="namecell" data-name="BROWSER"><a href="#browser" title="type=TABLE, primaryKey={BROWSER_ID}, nameLength=7, columnCount=4">BROWSER</a></td>
 		<td class="typecell">TABLE</td>
 		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#browser_user" title="FK_BROWSER_USER_BROWSER">BROWSER_USER</a></td>
+		<td class="commentcell BROWSER_comment"><pre>Browser Table</pre></td>
+		<td class="subcell">Browser</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="aliascell">Browser-User</td>
+		<td class="namecell" data-name="BROWSER_USER"><a href="#browser_user" title="type=TABLE, primaryKey={ID}, nameLength=12, columnCount=5">BROWSER_USER</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell"><a href="#browser" title="FK_BROWSER_USER_BROWSER">BROWSER</a>, <a href="#user" title="FK_BROWSER_USER_USER">USER</a></td>
 		<td class="relcell">&nbsp;</td>
-		<td class="commentcell SAMPLE_comment"><pre>this is sample table.</pre></td>
-		<td class="subcell">Sample</td>
+		<td class="commentcell BROWSER_USER_comment"><pre>Table for logged in users on specific browsers</pre></td>
+		<td class="subcell">BrowserUser</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="aliascell">Country</td>
+		<td class="namecell" data-name="COUNTRY"><a href="#country" title="type=TABLE, primaryKey={COUNTRY_ID}, nameLength=7, columnCount=4">COUNTRY</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_COUNTRY">USER_PROF</a></td>
+		<td class="commentcell COUNTRY_comment"><pre>Global country table for the system.</pre></td>
+		<td class="subcell">Country</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="aliascell">Didsplay Language</td>
+		<td class="namecell" data-name="DISPLAY_LANGUAGE"><a href="#display_language" title="type=TABLE, primaryKey={DISPLAY_LANGUAGE_ID}, nameLength=16, columnCount=4">DISPLAY_LANGUAGE</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_DISPLAY_LANGUAGE">USER_PROF</a></td>
+		<td class="commentcell DISPLAY_LANGUAGE_comment"><pre>Global language table for the system.</pre></td>
+		<td class="subcell">DisplayLanguage</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="aliascell">Follow</td>
+		<td class="namecell" data-name="FOLLOW"><a href="#follow" title="type=TABLE, primaryKey={FID}, nameLength=6, columnCount=5">FOLLOW</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell"><a href="#user" title="FK_FOLLOWED">USER</a>, <a href="#user" title="FK_FOLLOWER">USER</a></td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell FOLLOW_comment"><pre>Table for folloing/followed relationshoip</pre></td>
+		<td class="subcell">Follow</td>
 		<td class="subcell">2020/04/16</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">6</td>
+		<td class="aliascell">tweet</td>
+		<td class="namecell" data-name="TWEET"><a href="#tweet" title="type=TABLE, primaryKey={TWEET_ID}, nameLength=5, columnCount=7">TWEET</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell"><a href="#user" title="FK_TWEET_USER">USER</a>, <a href="#tweet" title="FK_TWEET_RETWEET">TWEET</a>, <a href="#tweet" title="FK_TWEET_REPLY">TWEET</a></td>
+		<td class="relcell"><a href="#tweet" title="FK_TWEET_RETWEET">TWEET</a>, <a href="#tweet" title="FK_TWEET_REPLY">TWEET</a>, <a href="#tweet_image" title="FK_TWEET_IMAGE_TWEET">TWEET_IMAGE</a></td>
+		<td class="commentcell TWEET_comment"><pre>THIS IS A TWEET TABLE.</pre></td>
+		<td class="subcell">Tweet</td>
+		<td class="subcell">2020/04/16</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">7</td>
+		<td class="aliascell">tweet_image</td>
+		<td class="namecell" data-name="TWEET_IMAGE"><a href="#tweet_image" title="type=TABLE, primaryKey={TWEET_ID}, nameLength=11, columnCount=5">TWEET_IMAGE</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell"><a href="#tweet" title="FK_TWEET_IMAGE_TWEET">TWEET</a></td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell TWEET_IMAGE_comment"><pre>This is tweet image table.</pre></td>
+		<td class="subcell">TweetImage</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">8</td>
+		<td class="aliascell">User</td>
+		<td class="namecell" data-name="USER"><a href="#user" title="type=TABLE, primaryKey={UID}, nameLength=4, columnCount=7">USER</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#browser_user" title="FK_BROWSER_USER_USER">BROWSER_USER</a>, <a href="#follow" title="FK_FOLLOWED">FOLLOW</a>, <a href="#follow" title="FK_FOLLOWER">FOLLOW</a>, <a href="#tweet" title="FK_TWEET_USER">TWEET</a>, <a href="#user_prof" title="FK_USER_PROF_USER">USER_PROF</a></td>
+		<td class="commentcell USER_comment"><pre>User information</pre></td>
+		<td class="subcell">User</td>
+		<td class="subcell">2020/04/16</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">9</td>
+		<td class="aliascell">User Profile</td>
+		<td class="namecell" data-name="USER_PROF"><a href="#user_prof" title="type=TABLE, primaryKey={USER_PROF_ID}, nameLength=9, columnCount=15">USER_PROF</a></td>
+		<td class="typecell">TABLE</td>
+		<td class="relcell"><a href="#country" title="FK_USER_PROF_COUNTRY">COUNTRY</a>, <a href="#display_language" title="FK_USER_PROF_DISPLAY_LANGUAGE">DISPLAY_LANGUAGE</a>, <a href="#user" title="FK_USER_PROF_USER">USER</a></td>
+		<td class="relcell">&nbsp;</td>
+		<td class="commentcell USER_PROF_comment"><pre>Profile of user account.</pre></td>
+		<td class="subcell">UserProf</td>
+		<td class="subcell">2020/05/14</td>
 	</tr>
 	</tbody>
 </table>
 
-<h2 id="sample" title="type=TABLE, primaryKey={SAMPLE_ID}, nameLength=6, columnCount=3">
-(サンプルのテーブル)SAMPLE
-&nbsp;<span class="tablefirstdatetitle">since 2020/04/16</span>
+<h2 id="browser" title="type=TABLE, primaryKey={BROWSER_ID}, nameLength=7, columnCount=4">
+(Browser)BROWSER
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
 </h2>
-<div class="tablecomment SAMPLE_comment" data-name="SAMPLE"><pre>this is sample table.</pre></div>
-<input type="hidden" value="SAMPLE">
+<div class="tablecomment BROWSER_comment" data-name="BROWSER"><pre>Browser Table</pre></div>
+<input type="hidden" value="BROWSER">
 <table class="tablecontent">
 	<thead>
 	<tr>
@@ -576,7 +644,7 @@ column.theme: hasAlias
 		<th>Since</th>
 	</tr>
 	</thead>
-	<tbody id="sample-body">
+	<tbody id="browser-body">
 	<tr>
 		<td class="rownumcell">1</td>
 		<td class="flgcell" title="PRIMARY">o</td>
@@ -584,15 +652,15 @@ column.theme: hasAlias
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class="aliascell"></td>
-		<td class=" columnnamecell" id="sample_sample_id">SAMPLE_ID</td>
+		<td class="aliascell">Browser ID</td>
+		<td class=" columnnamecell" id="browser_browser_id">BROWSER_ID</td>
 		<td class="typecell">BIGINT</td>
 		<td class="sizecell"> 19 </td>
 		<td class="relcell">&nbsp;&nbsp;</td>
-		<td class="relcell">&nbsp;</td>
+		<td class="relcell"><a href="#browser_user" title="FK_BROWSER_USER_BROWSER">BROWSER_USER</a>&nbsp;</td>
 		<td class="relcell"> &nbsp;</td>
 		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">sampleId</td>
+		<td class="subcell">browserId</td>
 		<td class="subcell">Long</td>
 		<td class="subcell">first</td>
 	</tr>
@@ -603,17 +671,17 @@ column.theme: hasAlias
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class="aliascell comcolcell"></td>
-		<td class="comcolcell columnnamecell" id="sample_created_at">CREATED_AT</td>
-		<td class="typecell">DATETIME</td>
-		<td class="sizecell"> 19 </td>
+		<td class="aliascell">cookie</td>
+		<td class=" columnnamecell" id="browser_cookie">COOKIE</td>
+		<td class="typecell">BLOB</td>
+		<td class="sizecell"> 65535 </td>
 		<td class="relcell">&nbsp;&nbsp;</td>
 		<td class="relcell">&nbsp;</td>
 		<td class="relcell"> &nbsp;</td>
 		<td class="commentcell"><pre>&nbsp;</pre></td>
-		<td class="subcell">createdAt</td>
-		<td class="subcell">LocalDateTime</td>
-		<td class="subcell">2020/04/16</td>
+		<td class="subcell">cookie</td>
+		<td class="subcell">byte[]</td>
+		<td class="subcell">first</td>
 	</tr>
 	<tr>
 		<td class="rownumcell">3</td>
@@ -622,8 +690,27 @@ column.theme: hasAlias
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">&nbsp;</td>
 		<td class="flgcell">*</td>
-		<td class="aliascell comcolcell"></td>
-		<td class="comcolcell columnnamecell" id="sample_updated_at">UPDATED_AT</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="browser_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="browser_updated_at">UPDATED_AT</td>
 		<td class="typecell">DATETIME</td>
 		<td class="sizecell"> 19 </td>
 		<td class="relcell">&nbsp;&nbsp;</td>
@@ -632,7 +719,1251 @@ column.theme: hasAlias
 		<td class="commentcell"><pre>&nbsp;</pre></td>
 		<td class="subcell">updatedAt</td>
 		<td class="subcell">LocalDateTime</td>
-		<td class="subcell">2020/04/16</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="browser_user" title="type=TABLE, primaryKey={ID}, nameLength=12, columnCount=5">
+(Browser-User)BROWSER_USER
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment BROWSER_USER_comment" data-name="BROWSER_USER"><pre>Table for logged in users on specific browsers</pre></div>
+<input type="hidden" value="BROWSER_USER">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="browser_user-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">ID</td>
+		<td class=" columnnamecell" id="browser_user_id">ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">id</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="FK_BROWSER_USER_USER(USER_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">User ID</td>
+		<td class=" columnnamecell" id="browser_user_user_id">USER_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#user" title="FK_BROWSER_USER_USER">USER</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Unique UID in database as primary key.</pre></td>
+		<td class="subcell">userId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="FK_BROWSER_USER_BROWSER(BROWSER_D)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Browser ID</td>
+		<td class=" columnnamecell" id="browser_user_browser_d">BROWSER_D</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#browser" title="FK_BROWSER_USER_BROWSER">BROWSER</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">browserD</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="browser_user_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="browser_user_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="country" title="type=TABLE, primaryKey={COUNTRY_ID}, nameLength=7, columnCount=4">
+(Country)COUNTRY
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment COUNTRY_comment" data-name="COUNTRY"><pre>Global country table for the system.</pre></div>
+<input type="hidden" value="COUNTRY">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="country-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Country ID</td>
+		<td class=" columnnamecell" id="country_country_id">COUNTRY_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_COUNTRY">USER_PROF</a>&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">countryId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Country Name</td>
+		<td class=" columnnamecell" id="country_country_name">COUNTRY_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">countryName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="country_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="country_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="display_language" title="type=TABLE, primaryKey={DISPLAY_LANGUAGE_ID}, nameLength=16, columnCount=4">
+(Didsplay Language)DISPLAY_LANGUAGE
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment DISPLAY_LANGUAGE_comment" data-name="DISPLAY_LANGUAGE"><pre>Global language table for the system.</pre></div>
+<input type="hidden" value="DISPLAY_LANGUAGE">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="display_language-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Display Language ID</td>
+		<td class=" columnnamecell" id="display_language_display_language_id">DISPLAY_LANGUAGE_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell"><a href="#user_prof" title="FK_USER_PROF_DISPLAY_LANGUAGE">USER_PROF</a>&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">displayLanguageId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Display Language Name</td>
+		<td class=" columnnamecell" id="display_language_display_language_name">DISPLAY_LANGUAGE_NAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 100 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">displayLanguageName</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="display_language_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="display_language_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="follow" title="type=TABLE, primaryKey={FID}, nameLength=6, columnCount=5">
+(Follow)FOLLOW
+&nbsp;<span class="tablefirstdatetitle">since 2020/04/16</span>
+</h2>
+<div class="tablecomment FOLLOW_comment" data-name="FOLLOW"><pre>Table for folloing/followed relationshoip</pre></div>
+<input type="hidden" value="FOLLOW">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="follow-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Follow ID</td>
+		<td class=" columnnamecell" id="follow_fid">FID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">fid</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="UQ_FOLLOW_FOLLOWER_FOLLOWED(FOLLOWER_ID, FOLLOWED_ID)">o<span class="flgplus">+</span></td>
+		<td class="flgcell" title="IX_FOLLOW_FOLLOWER_ID(FOLLOWER_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Follower ID</td>
+		<td class=" columnnamecell" id="follow_follower_id">FOLLOWER_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#user" title="FK_FOLLOWER">USER</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>ID of the following user</pre></td>
+		<td class="subcell">followerId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="UQ_FOLLOW_FOLLOWER_FOLLOWED(FOLLOWER_ID, FOLLOWED_ID)"><span class="flgplus">+</span>o</td>
+		<td class="flgcell" title="IX_FOLLOW_FOLLOWED_ID(FOLLOWED_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Followed ID</td>
+		<td class=" columnnamecell" id="follow_followed_id">FOLLOWED_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#user" title="FK_FOLLOWED">USER</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>USER_ID of the user being followed</pre></td>
+		<td class="subcell">followedId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="follow_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="follow_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="tweet" title="type=TABLE, primaryKey={TWEET_ID}, nameLength=5, columnCount=7">
+(tweet)TWEET
+&nbsp;<span class="tablefirstdatetitle">since 2020/04/16</span>
+</h2>
+<div class="tablecomment TWEET_comment" data-name="TWEET"><pre>THIS IS A TWEET TABLE.</pre></div>
+<input type="hidden" value="TWEET">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="tweet-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">tweet_id</td>
+		<td class=" columnnamecell" id="tweet_tweet_id">TWEET_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell"><a href="#tweet" title="FK_TWEET_RETWEET">TWEET</a>,<br><a href="#tweet" title="FK_TWEET_REPLY">TWEET</a>,<br><a href="#tweet_image" title="FK_TWEET_IMAGE_TWEET">TWEET_IMAGE</a>&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">tweetId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="IX_TWEET_POSTER_ID(POSTER_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">poster_id</td>
+		<td class=" columnnamecell" id="tweet_poster_id">POSTER_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#user" title="FK_TWEET_USER">USER</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Unique UID in database as primary key.</pre></td>
+		<td class="subcell">posterId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">text</td>
+		<td class=" columnnamecell" id="tweet_text">TEXT</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 280 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">text</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="IX_TWEET_CREATED_AT(CREATED_AT)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="tweet_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="IX_TWEET_UPDATE_AT(UPDATED_AT)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="tweet_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">6</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="IX_TWEET_REPLIED_TO_TWEET_ID(REPLIED_TO_TWEET_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Replied to Tweet ID</td>
+		<td class=" columnnamecell" id="tweet_replied_to_tweet_id">REPLIED_TO_TWEET_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#tweet" title="FK_TWEET_RETWEET">TWEET</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">repliedToTweetId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">7</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="IX_TWEET_RETWEET_TO_TWEET_ID(RETWEET_TO_TWEET_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Retweet to Tweet ID</td>
+		<td class=" columnnamecell" id="tweet_retweet_to_tweet_id">RETWEET_TO_TWEET_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#tweet" title="FK_TWEET_REPLY">TWEET</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">retweetToTweetId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="tweet_image" title="type=TABLE, primaryKey={TWEET_ID}, nameLength=11, columnCount=5">
+(tweet_image)TWEET_IMAGE
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment TWEET_IMAGE_comment" data-name="TWEET_IMAGE"><pre>This is tweet image table.</pre></div>
+<input type="hidden" value="TWEET_IMAGE">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="tweet_image-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="UQ_TWEET_IMAGE_TWEET_ID_IMAGE_NUMBER(TWEET_ID, IMAGE_NUMBER)">o<span class="flgplus">+</span></td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">tweet_id</td>
+		<td class=" columnnamecell" id="tweet_image_tweet_id">TWEET_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#tweet" title="FK_TWEET_IMAGE_TWEET">TWEET</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">tweetId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">image</td>
+		<td class=" columnnamecell" id="tweet_image_image">IMAGE</td>
+		<td class="typecell">BLOB</td>
+		<td class="sizecell"> 65535 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">image</td>
+		<td class="subcell">byte[]</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="tweet_image_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="tweet_image_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="UQ_TWEET_IMAGE_TWEET_ID_IMAGE_NUMBER(TWEET_ID, IMAGE_NUMBER)"><span class="flgplus">+</span>o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">image_number</td>
+		<td class=" columnnamecell" id="tweet_image_image_number">IMAGE_NUMBER</td>
+		<td class="typecell">SMALLINT</td>
+		<td class="sizecell"> 5 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">imageNumber</td>
+		<td class="subcell">Integer</td>
+		<td class="subcell">first</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="user" title="type=TABLE, primaryKey={UID}, nameLength=4, columnCount=7">
+(User)USER
+&nbsp;<span class="tablefirstdatetitle">since 2020/04/16</span>
+</h2>
+<div class="tablecomment USER_comment" data-name="USER"><pre>User information</pre></div>
+<input type="hidden" value="USER">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="user-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">User ID</td>
+		<td class=" columnnamecell" id="user_uid">UID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell"><a href="#browser_user" title="FK_BROWSER_USER_USER">BROWSER_USER</a>,<br><a href="#follow" title="FK_FOLLOWED">FOLLOW</a>,<br><a href="#follow" title="FK_FOLLOWER">FOLLOW</a>,<br><a href="#tweet" title="FK_TWEET_USER">TWEET</a>,<br><a href="#user_prof" title="FK_USER_PROF_USER">USER_PROF</a>&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Unique UID in database as primary key.</pre></td>
+		<td class="subcell">uid</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">2020/05/13</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="UQ_USER_EMAIL(EMAIL)">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Email address</td>
+		<td class=" columnnamecell" id="user_email">EMAIL</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 127 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Email address of the user. Also used as login information.</pre></td>
+		<td class="subcell">email</td>
+		<td class="subcell">String</td>
+		<td class="subcell">2020/05/13</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Hashed password</td>
+		<td class=" columnnamecell" id="user_password_hash">PASSWORD_HASH</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 255 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">passwordHash</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Password salt</td>
+		<td class=" columnnamecell" id="user_password_salt">PASSWORD_SALT</td>
+		<td class="typecell">CHAR</td>
+		<td class="sizecell"> 32 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Random password salt for each user</pre></td>
+		<td class="subcell">passwordSalt</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Last login</td>
+		<td class=" columnnamecell" id="user_last_login_at">LAST_LOGIN_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">lastLoginAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/13</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">6</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="user_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/13</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">7</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="user_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/13</td>
+	</tr>
+	</tbody>
+</table>
+
+<h2 id="user_prof" title="type=TABLE, primaryKey={USER_PROF_ID}, nameLength=9, columnCount=15">
+(User Profile)USER_PROF
+&nbsp;<span class="tablefirstdatetitle">since 2020/05/14</span>
+</h2>
+<div class="tablecomment USER_PROF_comment" data-name="USER_PROF"><pre>Profile of user account.</pre></div>
+<input type="hidden" value="USER_PROF">
+<table class="tablecontent">
+	<thead>
+	<tr>
+		<th class="rownumhead">No.</th>
+		<th>PK</th>
+		<th>ID</th>
+		<th>UQ</th>
+		<th>IX</th>
+		<th>Not<br />Null</th>
+		<th>Alias</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Size</th>
+		<th>ForeignTable</th>
+		<th>ReferrerTable</th>
+		<th>Classification</th>
+		<th>ColumnComment</th>
+		<th>PropertyName</th>
+		<th>JavaType</th>
+		<th>Since</th>
+	</tr>
+	</thead>
+	<tbody id="user_prof-body">
+	<tr>
+		<td class="rownumcell">1</td>
+		<td class="flgcell" title="PRIMARY">o</td>
+		<td class="flgcell">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">User Profile ID</td>
+		<td class=" columnnamecell" id="user_prof_user_prof_id">USER_PROF_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#user" title="FK_USER_PROF_USER">USER</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Unique UID in database as primary key.</pre></td>
+		<td class="subcell">userProfId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">2</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell" title="UQ_USER_PROF_USERNAME(USERNAME)">o</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Username</td>
+		<td class=" columnnamecell" id="user_prof_username">USERNAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 20 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Unique user id for @ mention etc.</pre></td>
+		<td class="subcell">username</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">3</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Nickname</td>
+		<td class=" columnnamecell" id="user_prof_nickname">NICKNAME</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 20 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>Displayed nickname for the account</pre></td>
+		<td class="subcell">nickname</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">4</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Phone number</td>
+		<td class=" columnnamecell" id="user_prof_phone_number">PHONE_NUMBER</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 20 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">phoneNumber</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">5</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Birthdate</td>
+		<td class=" columnnamecell" id="user_prof_date_of_birth_at">DATE_OF_BIRTH_AT</td>
+		<td class="typecell">DATE</td>
+		<td class="sizecell"> 10 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">dateOfBirthAt</td>
+		<td class="subcell">LocalDate</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">6</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Address</td>
+		<td class=" columnnamecell" id="user_prof_address">ADDRESS</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 255 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">address</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">7</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="FK_USER_PROF_DISPLAY_LANGUAGE(DISPLAY_LANGUAGE_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Display Language ID</td>
+		<td class=" columnnamecell" id="user_prof_display_language_id">DISPLAY_LANGUAGE_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#display_language" title="FK_USER_PROF_DISPLAY_LANGUAGE">DISPLAY_LANGUAGE</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">displayLanguageId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">8</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell" title="FK_USER_PROF_COUNTRY(COUNTRY_ID)">o</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell">Country ID</td>
+		<td class=" columnnamecell" id="user_prof_country_id">COUNTRY_ID</td>
+		<td class="typecell">BIGINT</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell"><a href="#country" title="FK_USER_PROF_COUNTRY">COUNTRY</a>&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">countryId</td>
+		<td class="subcell">Long</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">9</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Location</td>
+		<td class=" columnnamecell" id="user_prof_location">LOCATION</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 127 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">location</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">10</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">URL</td>
+		<td class=" columnnamecell" id="user_prof_url">URL</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 255 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">url</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">11</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Portrait</td>
+		<td class=" columnnamecell" id="user_prof_portrait">PORTRAIT</td>
+		<td class="typecell">BLOB</td>
+		<td class="sizecell"> 65535 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">portrait</td>
+		<td class="subcell">byte[]</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">12</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">Header image</td>
+		<td class=" columnnamecell" id="user_prof_header_image">HEADER_IMAGE</td>
+		<td class="typecell">BLOB</td>
+		<td class="sizecell"> 65535 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">headerImage</td>
+		<td class="subcell">byte[]</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">13</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="aliascell">biography</td>
+		<td class=" columnnamecell" id="user_prof_bio">BIO</td>
+		<td class="typecell">VARCHAR</td>
+		<td class="sizecell"> 1023 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">bio</td>
+		<td class="subcell">String</td>
+		<td class="subcell">first</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">14</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record creation date</td>
+		<td class="comcolcell columnnamecell" id="user_prof_created_at">CREATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">createdAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
+	</tr>
+	<tr>
+		<td class="rownumcell">15</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell"> &nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">&nbsp;</td>
+		<td class="flgcell">*</td>
+		<td class="aliascell comcolcell">Record update date</td>
+		<td class="comcolcell columnnamecell" id="user_prof_updated_at">UPDATED_AT</td>
+		<td class="typecell">DATETIME</td>
+		<td class="sizecell"> 19 </td>
+		<td class="relcell">&nbsp;&nbsp;</td>
+		<td class="relcell">&nbsp;</td>
+		<td class="relcell"> &nbsp;</td>
+		<td class="commentcell"><pre>&nbsp;</pre></td>
+		<td class="subcell">updatedAt</td>
+		<td class="subcell">LocalDateTime</td>
+		<td class="subcell">2020/05/14</td>
 	</tr>
 	</tbody>
 </table>
@@ -1198,10 +2529,209 @@ function StoreClient() {
 		]
 	}
 	this.pickupStore = {
-		'SAMPLE': {
-			'databaseComment': 'this&nbsp;is&nbsp;sample&nbsp;table.'
+		'BROWSER': {
+			'databaseComment': 'Browser&nbsp;Table'
 			, 'columns': {
-				'SAMPLE_ID': {
+				'BROWSER_ID': {
+					'databaseComment': ''
+				}
+				, 'COOKIE': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'BROWSER_USER': {
+			'databaseComment': 'Table&nbsp;for&nbsp;logged&nbsp;in&nbsp;users&nbsp;on&nbsp;specific&nbsp;browsers'
+			, 'columns': {
+				'ID': {
+					'databaseComment': ''
+				}
+				, 'USER_ID': {
+					'databaseComment': 'Unique&nbsp;UID&nbsp;in&nbsp;database&nbsp;as&nbsp;primary&nbsp;key.'
+				}
+				, 'BROWSER_D': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'COUNTRY': {
+			'databaseComment': 'Global&nbsp;country&nbsp;table&nbsp;for&nbsp;the&nbsp;system.'
+			, 'columns': {
+				'COUNTRY_ID': {
+					'databaseComment': ''
+				}
+				, 'COUNTRY_NAME': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'DISPLAY_LANGUAGE': {
+			'databaseComment': 'Global&nbsp;language&nbsp;table&nbsp;for&nbsp;the&nbsp;system.'
+			, 'columns': {
+				'DISPLAY_LANGUAGE_ID': {
+					'databaseComment': ''
+				}
+				, 'DISPLAY_LANGUAGE_NAME': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'FOLLOW': {
+			'databaseComment': 'Table&nbsp;for&nbsp;folloing/followed&nbsp;relationshoip'
+			, 'columns': {
+				'FID': {
+					'databaseComment': ''
+				}
+				, 'FOLLOWER_ID': {
+					'databaseComment': 'ID&nbsp;of&nbsp;the&nbsp;following&nbsp;user'
+				}
+				, 'FOLLOWED_ID': {
+					'databaseComment': 'USER_ID&nbsp;of&nbsp;the&nbsp;user&nbsp;being&nbsp;followed'
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'TWEET': {
+			'databaseComment': 'THIS&nbsp;IS&nbsp;A&nbsp;TWEET&nbsp;TABLE.'
+			, 'columns': {
+				'TWEET_ID': {
+					'databaseComment': ''
+				}
+				, 'POSTER_ID': {
+					'databaseComment': 'Unique&nbsp;UID&nbsp;in&nbsp;database&nbsp;as&nbsp;primary&nbsp;key.'
+				}
+				, 'TEXT': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+				, 'REPLIED_TO_TWEET_ID': {
+					'databaseComment': ''
+				}
+				, 'RETWEET_TO_TWEET_ID': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'TWEET_IMAGE': {
+			'databaseComment': 'This&nbsp;is&nbsp;tweet&nbsp;image&nbsp;table.'
+			, 'columns': {
+				'TWEET_ID': {
+					'databaseComment': ''
+				}
+				, 'IMAGE': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+				, 'IMAGE_NUMBER': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'USER': {
+			'databaseComment': 'User&nbsp;information'
+			, 'columns': {
+				'UID': {
+					'databaseComment': 'Unique&nbsp;UID&nbsp;in&nbsp;database&nbsp;as&nbsp;primary&nbsp;key.'
+				}
+				, 'EMAIL': {
+					'databaseComment': 'Email&nbsp;address&nbsp;of&nbsp;the&nbsp;user.&nbsp;Also&nbsp;used&nbsp;as&nbsp;login&nbsp;information.'
+				}
+				, 'PASSWORD_HASH': {
+					'databaseComment': ''
+				}
+				, 'PASSWORD_SALT': {
+					'databaseComment': 'Random&nbsp;password&nbsp;salt&nbsp;for&nbsp;each&nbsp;user'
+				}
+				, 'LAST_LOGIN_AT': {
+					'databaseComment': ''
+				}
+				, 'CREATED_AT': {
+					'databaseComment': ''
+				}
+				, 'UPDATED_AT': {
+					'databaseComment': ''
+				}
+			}
+		}
+		, 'USER_PROF': {
+			'databaseComment': 'Profile&nbsp;of&nbsp;user&nbsp;account.'
+			, 'columns': {
+				'USER_PROF_ID': {
+					'databaseComment': 'Unique&nbsp;UID&nbsp;in&nbsp;database&nbsp;as&nbsp;primary&nbsp;key.'
+				}
+				, 'USERNAME': {
+					'databaseComment': 'Unique&nbsp;user&nbsp;id&nbsp;for&nbsp;@&nbsp;mention&nbsp;etc.'
+				}
+				, 'NICKNAME': {
+					'databaseComment': 'Displayed&nbsp;nickname&nbsp;for&nbsp;the&nbsp;account'
+				}
+				, 'PHONE_NUMBER': {
+					'databaseComment': ''
+				}
+				, 'DATE_OF_BIRTH_AT': {
+					'databaseComment': ''
+				}
+				, 'ADDRESS': {
+					'databaseComment': ''
+				}
+				, 'DISPLAY_LANGUAGE_ID': {
+					'databaseComment': ''
+				}
+				, 'COUNTRY_ID': {
+					'databaseComment': ''
+				}
+				, 'LOCATION': {
+					'databaseComment': ''
+				}
+				, 'URL': {
+					'databaseComment': ''
+				}
+				, 'PORTRAIT': {
+					'databaseComment': ''
+				}
+				, 'HEADER_IMAGE': {
+					'databaseComment': ''
+				}
+				, 'BIO': {
 					'databaseComment': ''
 				}
 				, 'CREATED_AT': {

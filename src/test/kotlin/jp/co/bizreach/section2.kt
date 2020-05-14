@@ -27,8 +27,14 @@ class Section2 {
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
+select MEMBER.*, MEMBER_STATUS.*
 from MEMBER
+inner join MEMBER_STATUS
+  on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+where MEMBER.MEMBER_NAME like 'S%'
+  and MEMBER.BIRTHDATA is not null
+  and MEMBER.BIRTHDATE <= '1968-01-01'
+order by MEMBER.BIRTHDATE asc
         """.fetch()
 
         // Assert:
@@ -55,8 +61,14 @@ from MEMBER
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
+select MEMBER.*, MEMBER_STATUS.*, MEMBER_SECURITY.*
 from MEMBER
+inner join MEMBER_STATUS
+  on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+inner join MEMBER_SECURITY
+  on MEMBER.MEMBER_ID = MEMBER_SECURITY.MEMBER_ID
+order by MEMBER.BIRTHDATE desc,
+  MEMBER.MEMBER_ID asc
         """.fetch()
 
         // Assert:
@@ -84,8 +96,11 @@ from MEMBER
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
+select MEMBER.*, MEMBER_SECURITY.REMINDER_QUESTION
 from MEMBER
+inner join MEMBER_SECURITY
+  on MEMBER.MEMBER_ID = MEMBER_SECURITY.MEMBER_ID
+where MEMBER_SECURITY.REMINDER_QUESTION like '%2%'
         """.fetch()
 
         // Assert:
@@ -118,6 +133,10 @@ from MEMBER
         val results = """
 select MEMBER.*
 from MEMBER
+inner join MEMBER_STATUS
+  on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+order by MEMBER_STATUS.DISPLAY_ORDER asc,
+  MEMBER.MEMBER_ID desc
         """.fetch()
 
         // Assert:
@@ -147,8 +166,19 @@ from MEMBER
         // Act:
         // language=SQL
         val results = """
-select PURCHASE.*
-from PURCHASE
+select PURCHASE.*, MEMBER.MEMBER_NAME, MEMBER_STATUS.MEMBER_STATUS_NAME, PRODUCT.PRODUCT_NAME, MEMBER.BIRTHDATE
+from MEMBER
+inner join MEMBER_STATUS
+  on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+inner join PURCHASE
+  on MEMBER.MEMBER_ID = PURCHASE.MEMBER_ID
+inner join PRODUCT
+  on PURCHASE.PRODUCT_ID = PRODUCT.PRODUCT_ID
+where MEMBER.BIRTHDATE is not null
+order by PURCHASE.PURCHASE_DATETIME desc,
+  PURCHASE.PURCHASE_PRICE desc,
+  PRODUCT.PRODUCT_ID asc,
+  MEMBER.MEMBER_ID asc
         """.fetch()
 
         // Assert:
@@ -177,10 +207,14 @@ from PURCHASE
         // Act:
         // language=SQL
         val results = """
-select MEMBER.*
+select MEMBER.*, MEMBER_STATUS.MEMBER_STATUS_NAME
 from MEMBER 
-where :from <= UPDATE_DATETIME
-""".fetch("from" to fromParam)
+inner join MEMBER_STATUS
+  on MEMBER.MEMBER_STATUS_CODE = MEMBER_STATUS.MEMBER_STATUS_CODE
+where MEMBER.MEMBER_NAME like '%vi%'
+  and :from <= MEMBER.FORMALIZED_DATETIME
+  and :to > MEMBER.FORMALIZED_DATETIME
+""".fetch("from" to fromParam, "to" to toParam)
 
         // Assert:
         assertStep6(results)
