@@ -28,6 +28,7 @@ class Section1 {
 select *
 from MEMBER
 where MEMBER_NAME like 'S%'
+order by MEMBER.MEMBER_NAME asc
         """.fetch()
 
         // Assert:
